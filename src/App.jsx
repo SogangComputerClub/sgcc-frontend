@@ -9,6 +9,8 @@ import NewPassword from './pages/Login/NewPassword';
 import SignUp from './pages/SignUp/SignUp';
 import MyPage from './pages/MyPage/MyPage';
 import AuthProvider from './contexts/AuthProvider';
+import Write from './pages/Board/Write';
+import BoardDetail from './pages/Board/BoardDetail';
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
             <Route path="/NewPassword" element={<NewPassword/>}/>
             <Route path="/signup" element={<SignUp/>}/>
             <Route path="/mypage" element={<MyPage/>}/>
+            <Route path="/Write" element={<Write/>}/>
+            <Route path="/BoardDetail" element={<BoardDetail/>}/>
           </Routes>
           <Footer/>
         </Router>
