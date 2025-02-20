@@ -11,6 +11,9 @@ import MyPage from './pages/MyPage/MyPage';
 import AuthProvider from './contexts/AuthProvider';
 import Write from './pages/Board/Write';
 import BoardDetail from './pages/Board/BoardDetail';
+import LibraryBorrow from './pages/Library/LibraryBorrow';
+import LibraryDetail from './pages/Library/LibraryDetail';
+import LibraryRegister from './pages/Library/LibraryRegister';
 
 function App() {
   return (
@@ -26,6 +29,7 @@ function App() {
             <Route path="/mypage" element={<MyPage/>}/>
             <Route path="/Write" element={<Write/>}/>
             <Route path="/BoardDetail" element={<BoardDetail/>}/>
+            <Route
           </Routes>
           <Footer/>
         </Router>
