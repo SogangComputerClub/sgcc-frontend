@@ -39,7 +39,7 @@ const BoardDetail = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gray-100 flex justify-center py-10">
+        <div className="min-h-screen bg-gray-100 flex justify-center py-3">
           <div className="w-full max-w-7xl bg-white rounded-lg shadow-md p-6 flex space-x-6">
             <div className="w-2/9 bg-gray-50 p-4 rounded-lg border">
               <h2 className="text-lg font-semibold mb-4">목록</h2>
@@ -97,7 +97,7 @@ const BoardDetail = () => {
                   ></textarea>
                 </div>
                 <div className="flex justify-end">
-                  <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+                  <button type="submit" className="px-4 py-2 bg-black text-white rounded hover:bg-black">
                     등록
                   </button>
                 </div>
