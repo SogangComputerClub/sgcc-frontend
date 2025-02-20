@@ -20,18 +20,21 @@ function App() {
     <>
       <AuthProvider>
         <Router>
-          <Header/>
+          <Header />
           <Routes>
-            <Route path="/login" element={<Login/>}/>
-            <Route path="/passwordRecovery" element={<PasswordRecovery/>}/>
-            <Route path="/NewPassword" element={<NewPassword/>}/>
-            <Route path="/signup" element={<SignUp/>}/>
-            <Route path="/mypage" element={<MyPage/>}/>
-            <Route path="/Write" element={<Write/>}/>
-            <Route path="/BoardDetail" element={<BoardDetail/>}/>
-            <Route
+            <Route path="/login" element={<Login />} />
+            <Route path="/passwordRecovery" element={<PasswordRecovery />} />
+            <Route path="/NewPassword" element={<NewPassword />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/mypage" element={<MyPage />} />
+            <Route path="/Write" element={<Write />} />
+            <Route path="/BoardDetail" element={<BoardDetail />} />
+            <Route path='/LibraryBorrow' element={<LibraryBorrow />} />
+            <Route path="/LibraryDetail" element={<LibraryDetail />} />
+            <Route path='/LibraryRegister' element={<LibraryRegister />} />
+
           </Routes>
-          <Footer/>
+          <Footer />
         </Router>
       </AuthProvider>
     </>
