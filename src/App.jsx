@@ -32,7 +32,6 @@ function App() {
             <Route path='/LibraryBorrow' element={<LibraryBorrow />} />
             <Route path="/LibraryDetail" element={<LibraryDetail />} />
             <Route path='/LibraryRegister' element={<LibraryRegister />} />
-
           </Routes>
           <Footer />
         </Router>

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../header';
 import Footer from '../footer';
-import './Layout.css';
+import './LogoutLayout.css';
 
-const Layout = () => {
+const LogoutLayout = () => {
 
 
     return (
@@ -13,4 +13,4 @@ const Layout = () => {
             <Footer />
         </div>
     );
-}; export default Layout;
+}; export default LogoutLayout;
