@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useAuth }from '../contexts/AuthContext';
+import { useAuth } from '../contexts/AuthContext';
 
 const Header = () => {
     const { isLoggedIn, logout } = useAuth();
@@ -11,7 +11,7 @@ const Header = () => {
         <header className="bg-red-800 text-white py-4">
             <nav>
                 {isLoggedIn ? (
-                    <ul className="flex justify-center space-x-4">
+                    <ul className="flex justify-between space-x-5 px-5">
                         <li>
                             <Link to="/">홈으로 돌아가기</Link>
                         </li>
@@ -23,7 +23,7 @@ const Header = () => {
                         </li>
                     </ul>
                 ) : (
-                    <ul className="flex justify-center space-x-4">
+                    <ul className="flex ml-auto space-x-10 px-5">
                         <li>
                             <Link to="/">홈으로 돌아가기</Link>
                         </li>

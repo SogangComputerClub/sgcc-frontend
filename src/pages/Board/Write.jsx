@@ -11,8 +11,8 @@ const Write = () => {
     e.preventDefault();
     console.log("글쓰기 : ", { Title, Contents });
   };
-  
-  
+
+
 
   return (
     <div className="min-h-screen bg-gray-200 flex justify-center py-2">
@@ -59,7 +59,7 @@ const Write = () => {
             </div>
           </form>
         </div>
-        
+
       </div>
     </div>
   );

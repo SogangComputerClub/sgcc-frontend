@@ -39,7 +39,7 @@ const BoardDetail = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gray-100 flex justify-center py-3">
+        <div className="h-auto bg-gray-100 flex justify-center py-3">
           <div className="w-full max-w-7xl bg-white rounded-lg shadow-md p-6 flex space-x-6">
             <div className="w-2/9 bg-gray-50 p-4 rounded-lg border">
               <h2 className="text-lg font-semibold mb-4">목록</h2>
