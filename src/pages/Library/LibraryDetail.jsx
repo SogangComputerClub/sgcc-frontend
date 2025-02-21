@@ -1,8 +1,11 @@
+import React, { useState } from 'react';
+import Book from '../../components/Library/Book';
+
 const LibraryBorrow = () => {
     return (
-        <div className="min-h-screen bg-gray-100 flex justify-center py-3">
-            <h1 className="text-3xl font-bold mb-4">도서목록</h1>
-        </div>
+            <div>
+                <Book viewMode='card'/>
+            </div>
 
     );
 };
