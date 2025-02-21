@@ -1,4 +1,7 @@
 import React, { useState, useRef } from 'react';
+import { NotionAPI } from 'notion-client';
+const notion = new NotionAPI();
+const recordMap = await notion.getPage("노션 공개용ID");
 
 const Write = () => {
   const [Title, setTitle] = useState("");
