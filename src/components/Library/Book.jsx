@@ -29,7 +29,7 @@ const Book = ({ viewMode }) => {
                         <div className="flex items-center gap-3">
                             <h3
                                 className={`text-sm ${
-                                book.isAvailable ? 'text-gray-800' : 'text-orange-500'
+                                book.isAvailable ? 'text-transparent' : 'text-orange-500'
                                 }`}
                             >
                             {book.isAvailable ? "대여 가능" : "대여 불가"}
