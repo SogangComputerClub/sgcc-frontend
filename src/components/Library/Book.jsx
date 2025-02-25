@@ -1,100 +1,101 @@
-import { useState } from 'react';
-import PropTypes from "prop-types"; // ✅ prop-types 가져오기
-const Book = ({ viewMode, onClick }) => {
-    const [book, setBook] = useState({
-        title: "책 제목이 얼마나 길진 모르겠지만 아무튼 제목",
-        author: "저자",
-        publisher: "출판사",
-        year: 2025,
-        copies: 1,
-        image: "https://via.placeholder.com/100",
-        isAvailable: true, // 대여 가능 여부
-    });
+import PropTypes from "prop-types";
 
-    // 📌 대여 가능 여부 토글
-    const toggleAvailability = () => {
-        setBook({ ...book, isAvailable: !book.isAvailable });
-    };
+const Book = ({ viewMode, onClick, title, author, publisher, year, copies, discription, isAvailable, image }) => {
+//지금은 admin과 일반 사용자를 구분하는 코드가 없으므로 그냥 토글 버튼을 unable시킴 -> admin일 때는 이 코드 살리면 됨
+  // const toggleAvailability = () => {
+  //   // 예시: 외부에서 관리하는 상태 변경 함수(onToggle)를 호출하거나, 로컬에서 처리할 경우
+  //   console.log("Toggle availability clicked");
+  // };
+  
+  return (
+    <div>
+  {viewMode === "card" ? (
+    <div
+      className="p-6 border border-gray-300 rounded-lg shadow-lg w-80 flex flex-col"
+      onClick={() => {
+        console.log("Book clicked!");
+        if (onClick) onClick();
+      }}
+    >
+      {/* Availability Badge */}
+      <div className="flex justify-between items-center mb-4">
+        <span
+          className={`text-sm font-bold px-3 py-1 rounded-full ${
+            isAvailable ? "bg-green-500 text-white" : "bg-red-500 text-white"
+          }`}
+        >
+          {isAvailable ? "대여 가능" : "대여 불가"}
+        </span>
+      </div>
 
-    return (
-        <div>
-            {/* 리스트형 레이아웃 */}
-            {viewMode === "card" ? (
-                <div
-                    className="p-5 border cursor-pointer border-gray-300 rounded-lg shadow-lg w-64"
-                    onClick={() => {
-                        console.log('Book clicked!');
-                        if (onClick) onClick();
-                    }}                >
-                    <div className="flex justify-between items-center">
-                        <span className={`text-sm font-bold px-3 py-1 rounded-full ${book.isAvailable ? "bg-gray-800 text-white" : "bg-gray-300 text-gray-500"}`}>
-                            {book.isAvailable ? "대여 가능" : "대여 불가"}
-                        </span>
+      {/* Book Information */}
+      <h2 className="text-xl font-semibold text-gray-800 mb-2">{title}</h2>
+      <p className="text-sm text-gray-600 mb-2">{author} | {publisher} | {year}년 | {copies}권</p>
+      <p className="text-sm text-gray-500 mb-4">
+        {discription.length > 60 ? discription.substring(0, 60) + "..." : discription}
+      </p>
 
-                        <div className="flex items-center gap-3">
-                            <h3
-                                className={`text-sm ${book.isAvailable ? 'text-transparent' : 'text-orange-500'
-                                    }`}
-                            >
-                                {book.isAvailable ? "대여 가능" : "대여 불가"}
-                            </h3>
+      {/* Book Image */}
+      {image ? (
+        <img src={image} alt={title} className="w-full h-48 object-cover rounded-lg mb-4" />
+      ) : (
+        <div className="w-full h-48 bg-gray-300 rounded-lg mb-4"></div>
+      )}
 
-                            <button
-                                onClick={toggleAvailability}
-                                className={`w-14 h-8 flex items-center rounded-full p-1 transition duration-300 ${book.isAvailable ? "bg-orange-500" : "bg-gray-300"
-                                    }`}
-                            >
-                                <div
-                                    className={`w-6 h-6 bg-white rounded-full shadow-md transform transition duration-300 ${book.isAvailable ? "translate-x-6" : "translate-x-0"
-                                        }`}
-                                ></div>
-                            </button>
-                        </div>
-                    </div>
+      {/* Action Button */}
+      <button
+        className="w-full py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300"
+        onClick={() => {
+          console.log("Borrow clicked!");
+          if (onClick) onClick();
+        }}
+      >
+        {isAvailable ? "대여하기" : "대여 불가"}
+      </button>
+    </div>
+  ) : (
+        <div
+          className="p-5 border cursor-pointer border-gray-300 rounded-lg shadow-lg w-64"
+          onClick={() => {
+            console.log("Book clicked!");
+            if (onClick) onClick();
+          }}
+        >
+          <span
+            className={`text-sm font-bold px-3 py-1 rounded-full ${
+              isAvailable ? "bg-gray-800 text-white" : "bg-gray-300 text-gray-500"
+            }`}
+          >
+            {isAvailable ? "대여 가능" : "대여 불가"}
+          </span>
 
-                    {/* 책 정보 */}
-                    <h2 className="text-xl font-bold mt-2">{book.title}</h2>
-                    <p className="text-sm text-gray-600 mt-1">
-                        {book.author} | {book.publisher} | {book.year}년 | {book.copies}권
-                    </p>
-                    <p className="text-sm text-gray-500 mt-2">
-                        무언가 책에 대한 설명이 필요하다면 여기에...
-                    </p>
+          <h2 className="text-lg font-bold mt-2">{title}</h2>
+          <p className="text-sm text-gray-600">{author}</p>
 
-                    {/* 이미지 목록 */}
-                    <div className="flex gap-2 mt-3">
-                        <div className="w-24 h-32 bg-gray-300"></div>
-                        <div className="w-24 h-32 bg-gray-300"></div>
-                        <div className="w-24 h-32 bg-gray-300"></div>
-                    </div>
-                </div>
-            ) : (
-                /* 카드형 레이아웃 */
-                <div
-                    className="p-5 border cursor-pointer border-gray-300 rounded-lg shadow-lg w-64"
-                    onClick={() => {
-                        console.log('Book clicked!');
-                        if (onClick) onClick();
-                    }}
-                >
-                    <span className={`text-sm font-bold px-3 py-1 rounded-full ${book.isAvailable ? "bg-gray-800 text-white" : "bg-gray-300 text-gray-500"}`}>
-                        {book.isAvailable ? "대여 가능" : "대여 불가"}
-                    </span>
-
-                    <h2 className="text-lg font-bold mt-2">{book.title}</h2>
-                    <p className="text-sm text-gray-600">{book.author}</p>
-
-                    {/* 책 이미지 */}
-                    <div className="w-full h-40 bg-gray-300 mt-3"></div>
-                </div>
-            )
-            }
-        </div >
-    );
+          {/* 책 이미지 */}
+          {image ? (
+            <img src={image} alt={title} className="w-full h-40 object-cover mt-3" />
+          ) : (
+            <div className="w-full h-40 bg-gray-300 mt-3"></div>
+          )}
+        </div>
+      )}
+    </div>
+  );
 };
-// ✅ prop-types 설정 추가 (오류 해결)
+
 Book.propTypes = {
-    viewMode: PropTypes.string.isRequired, // `viewMode`는 반드시 문자열이어야 함
-    onClick: PropTypes.func,
+  viewMode: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
+  title: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
+  publisher: PropTypes.string.isRequired,
+  year: PropTypes.number.isRequired,
+  copies: PropTypes.number.isRequired,
+  discription: PropTypes.string,
+
+  isAvailable: PropTypes.bool.isRequired,
+  image: PropTypes.string,
 };
+
 export default Book;
