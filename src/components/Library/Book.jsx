@@ -5,7 +5,7 @@ const Book = ({ viewMode, onClick, title, author, publisher, year, copies, descr
     <div>
       {viewMode === "card" ? (
         <div
-          className="p-6 border border-gray-200 rounded-lg min-w-[1000px] min-h-[850px] flex flex-col bg-white text-black cursor-pointer"
+          className="p-6 border rounded-lg min-w-[1000px] min-h-[850px] flex flex-col bg-white cursor-pointer"
           onClick={() => {
             console.log("Book clicked!");
             if (onClick) onClick();
@@ -14,9 +14,8 @@ const Book = ({ viewMode, onClick, title, author, publisher, year, copies, descr
           {/* 대여 가능/불가 태그 스타일 변경 */}
           <div className="flex justify-between items-center mb-4">
             <span
-              className={`text-sm font-bold px-3 py-1 rounded-full ${
-                isAvailable ? "bg-green-500 text-white" : "bg-red-500 text-white"
-              }`}
+              className={`text-sm font-bold px-3 py-1 rounded-full ${isAvailable ? "bg-green-500 text-white" : "bg-red-500 text-white"
+                }`}
             >
               {isAvailable ? "대여 가능" : "대여 불가"}
             </span>
@@ -45,9 +44,8 @@ const Book = ({ viewMode, onClick, title, author, publisher, year, copies, descr
           }}
         >
           <span
-            className={`text-sm font-bold px-3 py-1 rounded-full ${
-              isAvailable ? "bg-gray-800 text-white" : "bg-gray-300 text-gray-500"
-            }`}
+            className={`text-sm font-bold px-3 py-1 rounded-full ${isAvailable ? "bg-gray-800 text-white" : "bg-red-700 text-white"
+              }`}
           >
             {isAvailable ? "대여 가능" : "대여 불가"}
           </span>
