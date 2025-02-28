@@ -8,7 +8,7 @@ const Header = () => {
         console.log(`로그인 상태: ${isLoggedIn ? '로그인됨' : '로그아웃됨'}`);
     }, [isLoggedIn]);
     return (
-        <header className="bg-red-800 text-white py-4">
+        <header className="bg-black text-white py-4">
             <nav>
                 {isLoggedIn ? (
                     <ul className="flex justify-end space-x-5 px-5">
