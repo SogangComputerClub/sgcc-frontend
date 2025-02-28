@@ -1,61 +1,44 @@
 import PropTypes from "prop-types";
 
-const Book = ({ viewMode, onClick, title, author, publisher, year, copies, discription, isAvailable, image }) => {
-//지금은 admin과 일반 사용자를 구분하는 코드가 없으므로 그냥 토글 버튼을 unable시킴 -> admin일 때는 이 코드 살리면 됨
-  // const toggleAvailability = () => {
-  //   // 예시: 외부에서 관리하는 상태 변경 함수(onToggle)를 호출하거나, 로컬에서 처리할 경우
-  //   console.log("Toggle availability clicked");
-  // };
-  
+const Book = ({ viewMode, onClick, title, author, publisher, year, copies, description, isAvailable, image }) => {
   return (
     <div>
-  {viewMode === "card" ? (
-    <div
-      className="p-6 border border-gray-300 rounded-lg shadow-lg w-80 flex flex-col"
-      onClick={() => {
-        console.log("Book clicked!");
-        if (onClick) onClick();
-      }}
-    >
-      {/* Availability Badge */}
-      <div className="flex justify-between items-center mb-4">
-        <span
-          className={`text-sm font-bold px-3 py-1 rounded-full ${
-            isAvailable ? "bg-green-500 text-white" : "bg-red-500 text-white"
-          }`}
-        >
-          {isAvailable ? "대여 가능" : "대여 불가"}
-        </span>
-      </div>
-
-      {/* Book Information */}
-      <h2 className="text-xl font-semibold text-gray-800 mb-2">{title}</h2>
-      <p className="text-sm text-gray-600 mb-2">{author} | {publisher} | {year}년 | {copies}권</p>
-      <p className="text-sm text-gray-500 mb-4">
-        {discription.length > 60 ? discription.substring(0, 60) + "..." : discription}
-      </p>
-
-      {/* Book Image */}
-      {image ? (
-        <img src={image} alt={title} className="w-full h-48 object-cover rounded-lg mb-4" />
-      ) : (
-        <div className="w-full h-48 bg-gray-300 rounded-lg mb-4"></div>
-      )}
-
-      {/* Action Button */}
-      <button
-        className="w-full py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300"
-        onClick={() => {
-          console.log("Borrow clicked!");
-          if (onClick) onClick();
-        }}
-      >
-        {isAvailable ? "대여하기" : "대여 불가"}
-      </button>
-    </div>
-  ) : (
+      {viewMode === "card" ? (
         <div
-          className="p-5 border cursor-pointer border-gray-300 rounded-lg shadow-lg w-64"
+          className="p-6 border border-gray-200 rounded-lg min-w-[1000px] min-h-[850px] flex flex-col bg-white text-black cursor-pointer"
+          onClick={() => {
+            console.log("Book clicked!");
+            if (onClick) onClick();
+          }}
+        >
+          {/* 대여 가능/불가 태그 스타일 변경 */}
+          <div className="flex justify-between items-center mb-4">
+            <span
+              className={`text-sm font-bold px-3 py-1 rounded-full ${
+                isAvailable ? "bg-green-500 text-white" : "bg-red-500 text-white"
+              }`}
+            >
+              {isAvailable ? "대여 가능" : "대여 불가"}
+            </span>
+          </div>
+
+          {/* 책 제목과 설명 스타일 변경 */}
+          <h2 className="text-xl font-bold mb-2">{title}</h2>
+          <p className="text-sm text-gray-600">{author}  |  {publisher}  |  {year}년  |  {copies}권</p>
+          <p className="text-sm text-gray-500 mt-2">
+            {description && description.length > 60 ? description.substring(0, 60) + "..." : description}
+          </p>
+
+          {/* 책 이미지 스타일 변경 */}
+          {image ? (
+            <img src={image} alt={title} className="w-full h-40 object-cover rounded-md mt-3" />
+          ) : (
+            <div className="w-full h-40 bg-gray-300 rounded-md mt-3"></div>
+          )}
+        </div>
+      ) : (
+        <div
+          className="p-5 border cursor-pointer border-gray-300 rounded-lg w-64"
           onClick={() => {
             console.log("Book clicked!");
             if (onClick) onClick();
@@ -92,8 +75,7 @@ Book.propTypes = {
   publisher: PropTypes.string.isRequired,
   year: PropTypes.number.isRequired,
   copies: PropTypes.number.isRequired,
-  discription: PropTypes.string,
-
+  description: PropTypes.string,  // ✅ 수정됨 (오타 해결)
   isAvailable: PropTypes.bool.isRequired,
   image: PropTypes.string,
 };

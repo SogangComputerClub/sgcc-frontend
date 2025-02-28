@@ -115,7 +115,9 @@ const LibraryBorrow = () => {
         navigate('/libraryDetail', { state:  { bookData:book }});
       };
     const [activeTab, setActiveTab] = useState("전체");
-
+    const filteredBooks = activeTab === "대여 가능" 
+    ? bookData.filter(book => book.isAvailable) 
+    : bookData;
     return (
         <div className="relative w-full p-5">
             <h1 className="text-2xl font-extrabold flex justify-center mb-4 ">도서 목록</h1>
@@ -141,19 +143,14 @@ const LibraryBorrow = () => {
 
             <div className="w-auto h-auto px-5 bg-gray-200 flex justify-center mt-5">
                 <div className="grid grid-cols-4 gap-4">
-                    {bookData.map((book, index) => (
-                        // Book 컴포넌트를 반복문을 사용하여 렌더링합니다.
-                        // viewMode는 "list"로 설정하여 리스트 형태로 보여주며,
-                        // ...book을 사용해 book 객체에 담긴 title, author, publisher, year, copies, isAvailable 등 필요한 props를 전달합니다.
-                    
-                        <Book
+                {filteredBooks.map((book, index) => (
+                    <Book
                         key={index}
                         onClick={() => handleBookClick(book)}
                         viewMode="list"
                         {...book}
-                      /> 
-                   ))}
-                </div>
+                    /> 
+                ))}                </div>
             </div>
         </div>
     );
