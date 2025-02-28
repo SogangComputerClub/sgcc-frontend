@@ -11,7 +11,7 @@ const Header = () => {
         <header className="bg-red-800 text-white py-4">
             <nav>
                 {isLoggedIn ? (
-                    <ul className="flex justify-between space-x-5 px-5">
+                    <ul className="flex justify-end space-x-5 px-5">
                         <li>
                             <Link to="/">홈으로 돌아가기</Link>
                         </li>
@@ -23,7 +23,7 @@ const Header = () => {
                         </li>
                     </ul>
                 ) : (
-                    <ul className="flex ml-auto space-x-10 px-5">
+                    <ul className="flex justify-end space-x-5 px-5">
                         <li>
                             <Link to="/">홈으로 돌아가기</Link>
                         </li>
