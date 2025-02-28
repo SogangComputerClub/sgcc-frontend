@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { NotionAPI } from "notion-client";
-
+import notion from "../../contexts/NotionContext";
 const SideBar = () => {
 
   useEffect(() => {
     const fetchNotionData = async () => {
       try {
-        const notion = new NotionAPI();
-        const recordMap = await notion.getPage("1a1bfb388fbc80eb901ed673815b9764?pvs=4");
+        const recordMap = await notion.getPage("1a8b0a2d89d4808b975bdc2190ae31e2");
+        console.log(recordMap);
       } catch (error) {
         console.error("Notion 데이터 가져오기 오류:", error);
       }
