@@ -13,7 +13,7 @@ const Header = () => {
                 {isLoggedIn ? (
                     <ul className="flex justify-end space-x-5 px-5">
                         <li>
-                            <Link to="/">홈으로 돌아가기</Link>
+                            <Link to="/">SGCC</Link>
                         </li>
                         <li>
                             <Link to="/mypage">마이페이지</Link>
