@@ -109,7 +109,7 @@ import books from '../../components/Library/BookList';
 
 //라이브러리 화면 처음 들어갔을 때 보이는 화면
 //list형의 책 정보들이 4개씩 보이게 해야함 - 벡이랑 연결하기 전에는 12개만 만들어 놓자
-const LibraryBorrow = (book) => {
+const LibraryBorrow = () => {
   const navigate = useNavigate();
   const handleBookClick = (book) => {
     console.log('Navigating to LibraryDetail with book data');

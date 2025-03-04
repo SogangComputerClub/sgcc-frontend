@@ -17,6 +17,7 @@ const Header = () => {
 
                 {/* ✅ 네비게이션 메뉴 */}
                 <ul className="flex space-x-6">
+                    <li><Link to="/AboutUsPage" className="hover:font-bold">AboutUs</Link></li>
                     <li><Link to="/BoardDetail" className="hover:font-bold">Board</Link></li>
                     <li><Link to="/BoardDetail" className="hover:font-bold">Study</Link></li>
                     <li><Link to="/LibraryBorrow" className="hover:font-bold">Library</Link></li>
@@ -30,8 +31,8 @@ const Header = () => {
                     </div>
                 ) : (
                     <div className="flex space-x-5">
-                        <Link to="/signup" className="text-gray-400">회원가입</Link>
-                        <Link to="/login" className="text-white">로그인하기</Link>
+                        <Link to="/signup" className="text-white hover:font-bold">회원가입</Link>
+                        <Link to="/login" className="text-white hover:font-bold">로그인하기</Link>
                     </div>
                 )}
             </nav>
