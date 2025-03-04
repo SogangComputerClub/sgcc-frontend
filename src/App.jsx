@@ -16,10 +16,8 @@ import LibraryDetail from './pages/Library/LibraryDetail';
 import LibraryRegister from './pages/Library/LibraryRegister';
 // core styles shared by all of react-notion-x (required)
 import 'react-notion-x/src/styles.css'
-
 // used for code syntax highlighting (optional)
 import 'prismjs/themes/prism-tomorrow.css'
-
 // used for rendering equations (optional)
 import 'katex/dist/katex.min.css'
 
@@ -36,7 +34,10 @@ function App() {
             <Route path="/signup" element={<SignUp />} />
             <Route path="/mypage" element={<MyPage />} />
             <Route path="/Write" element={<Write />} />
-            <Route path="/BoardDetail" element={<BoardDetail />} />
+            <Route path="/BoardDetail">
+              <Route path=":notionPageId" element={<BoardDetail />} />
+              <Route index element={<BoardDetail />} />
+            </Route>
             <Route path='/LibraryBorrow' element={<LibraryBorrow />} />
             <Route path="/LibraryDetail" element={<LibraryDetail />} />
             <Route path='/LibraryRegister' element={<LibraryRegister />} />
