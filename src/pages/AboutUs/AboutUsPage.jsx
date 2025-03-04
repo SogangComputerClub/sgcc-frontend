@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+
 const months = [
   "1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"
 ];
@@ -32,7 +33,7 @@ function Calendar({ onSelectMonth }) {
         <button
           key={index}
           onClick={() => onSelectMonth(month)}
-          className="bg-gray-700 text-white p-6 rounded-2xl text-left text-2xl font-bold hover:bg-gray-600"
+          className="bg-gray-700 text-white p-5 rounded-2xl text-left text-2xl font-bold hover:bg-gray-600"
         >
           {month}
         </button>
@@ -73,12 +74,14 @@ export default function AboutUsPage() {
         </div>
       
       <main className="flex-1 p-10">
-        <h1 className="text-center text-lg mb-6">무언가의 인사말이 적히는 공간이고<br/>이걸 밑으로 스크롤 하면 캘린더가 보이게 되는 그런</h1>
-        
+        <div className="h-96 text-center text-lg mb-6">
+          <h1>SGCC는 1982년에 창립된 "컴퓨터"라는 공통 관심사를 가진 사람들이 모인 서강대학교 유일의 중앙 컴퓨터 동아리입니다. SGCC는 컴퓨터에 관한 모든 주제에 대해 환영하는 소통의 장으로서, 약 40년 간의 역사를 이어가고 있습니다.<br/><br/><br/>SGCC는 컴퓨터에 대한 다양한 분야를 체험할 수 있으며, 초심자에게 매우 친화적인 플랫폼입니다. 부원들은 매 학기 SGCC에서 운영하는 기초 프로그래밍 스터디 및 심화 세미나를 통해 함께 학습하며 성장해 나갈 수 있습니다. 뿐만 아니라, 슬기로운 인디 생활 등 정기적으로 프로젝트를 진행하며 협업의 장으로서 활발하게 활동하고 있습니다.</h1>
+          <img src="images/9.png" className="w-auto h-auto" alt="SGCC 로고" />
+        </div>
         <div className="flex justify-center items-center gap-4 mb-4">
-          <button onClick={() => setYear(year - 1)} className="px-3 py-1 bg-gray-300 rounded">&lt;</button>
-          <span className="text-xl font-bold">{year}</span>
-          <button onClick={() => setYear(year + 1)} className="px-3 py-1 bg-gray-300 rounded">&gt;</button>
+          <button className="text-2xl text-gray-500 font-extrabold bg-white">&lt;</button>
+          <span className="text-3xl font-bold">{year}</span>
+          <button className="text-2xl text-gray-500 font-extrabold bg-white">&gt;</button>
         </div>
 
         <Calendar onSelectMonth={setSelectedMonth} />
