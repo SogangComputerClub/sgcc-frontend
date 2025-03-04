@@ -31,8 +31,7 @@ const Header = () => {
                     </div>
                 ) : (
                     <div className="flex space-x-5">
-                        <Link to="/signup" className="text-white hover:font-bold">회원가입</Link>
-                        <Link to="/login" className="text-white hover:font-bold">로그인하기</Link>
+                        <Link to="/login" className="text-white hover:font-bold">Log in</Link>
                     </div>
                 )}
             </nav>
