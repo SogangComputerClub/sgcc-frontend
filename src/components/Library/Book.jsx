@@ -5,7 +5,7 @@ const Book = ({ viewMode, onClick, title, author, publisher, year, copies, descr
     <div>
       {viewMode === "card" ? (
         <div
-          className="p-6 border rounded-lg min-w-[1000px] h-[900px] flex flex-col bg-white cursor-pointer"
+          className="p-6 rounded-lg min-w-[900px] h-[500px] flex flex-col bg-white cursor-pointer"
           onClick={() => {
             console.log("Book clicked!");
             if (onClick) onClick();
@@ -31,7 +31,7 @@ const Book = ({ viewMode, onClick, title, author, publisher, year, copies, descr
 
           {/* 책 이미지 스타일 변경 */}
           {image ? (
-            <img src={image} alt={title} className="w-full h-40 object-cover rounded-md mt-3" />
+            <img src={image} alt={title} className="w-60 h-100 object-cover rounded-md mt-3" />
           ) : (
             <div className="w-full h-40 bg-gray-300 rounded-md mt-3"></div>
           )}
