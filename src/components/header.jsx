@@ -25,6 +25,7 @@ const Header = () => {
                 {/* ✅ 로그인 상태에 따른 버튼 */}
                 {isLoggedIn ? (
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                     <ul className="flex justify-end space-x-5 px-5">
                         <li>
                             <Link to="/">홈으로 돌아가기</Link>
@@ -37,10 +38,15 @@ const Header = () => {
                         </li>
                     </ul>
 =======
+=======
+>>>>>>> Stashed changes
                     <div className="flex space-x-5">
                         <Link to="/mypage">마이페이지</Link>
                         <button onClick={logout} className="bg-red-600 px-4 py-2 rounded">로그아웃</button>
                     </div>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
                 ) : (
                     <div className="flex space-x-5">
