@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 const months = [
   "1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"
@@ -34,10 +34,17 @@ function Sidebar({ isOpen, toggleSidebar }) {
         />
       )}
 
-      {/* 사이드바 (데스크톱: 56px, 모바일: 5/6) */}
+      {/* 사이드바 */}
       <aside
-        className={`fixed top-0 left-0 h-full w-3/10 md:w-48 bg-gray-800 text-white p-5 transition-transform duration-300 z-40
-          ${isOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0 md:relative md:h-auto flex flex-col items-start`}
+        className={`
+          fixed top-0 left-0 h-full
+          bg-gray-800 text-white p-5
+          transition-transform duration-300 z-40
+          flex flex-col items-start
+          ${isOpen ? "translate-x-0" : "-translate-x-full"}
+          md:translate-x-0 md:relative md:h-auto
+          w-[70%] sm:w-[50%] md:w-48
+        `}
       >
         <h2 className="text-lg font-semibold w-full text-center">Contents</h2>
         <nav className="mt-4 w-full flex flex-col items-center">
@@ -78,9 +85,11 @@ function CalendarGrid({ onSelectMonth, selectedMonth }) {
         <button
           key={index}
           onClick={() => onSelectMonth(month)}
-          className={`w-full py-6 bg-gray-700 text-white rounded-xl text-lg font-bold hover:bg-gray-600 transition-colors ${
-            selectedMonth === month ? "bg-gray-900 ring-4 ring-blue-500" : ""
-          }`}
+          className={`
+            w-full py-6 bg-gray-700 text-white rounded-xl text-lg font-bold
+            hover:bg-gray-600 transition-colors
+            ${selectedMonth === month ? "bg-gray-900 ring-4 ring-blue-500" : ""}
+          `}
         >
           {month}
         </button>
@@ -113,14 +122,14 @@ function EventBox({ selectedMonth, year }) {
   );
 }
 
-export default function CalendarPage() {
+export default function AboutUsPage() {
   const [selectedMonth, setSelectedMonth] = useState(null);
   const [year, setYear] = useState(2025);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="flex">
-      {/* 햄버거 메뉴 (모바일) - 사이드바가 닫혀있을 때만 보임 */}
+    <div className="flex flex-1 relative overflow-x-hidden">
+      {/* 모바일: 사이드바가 닫혔을 때만 햄버거 버튼 보임 */}
       {!sidebarOpen && (
         <button
           className="md:hidden w-12 h-12 bg-gray-800 text-white fixed top-20 left-4 z-50 rounded-md flex items-center justify-center"
@@ -130,24 +139,19 @@ export default function CalendarPage() {
         </button>
       )}
 
-      {/* 사이드바 */}
-      <Sidebar
-        isOpen={sidebarOpen}
-        toggleSidebar={() => setSidebarOpen(!sidebarOpen)}
-      />
+      <Sidebar isOpen={sidebarOpen} toggleSidebar={() => setSidebarOpen(!sidebarOpen)} />
 
-      {/* 메인 컨텐츠 */}
-      <main className="flex-1 flex flex-col items-center justify-center p-10">
-        {/* 인사말 */}
+      <main className="flex-1 flex flex-col items-center justify-center p-4 md:p-10">
         <div className="text-center text-lg max-w-2xl">
           <h1>
             SGCC는 1982년에 창립된 "컴퓨터"라는 공통 관심사를 가진 사람들이 모인 
             서강대학교 유일의 중앙 컴퓨터 동아리입니다. SGCC는 컴퓨터에 관한 모든 
             주제에 대해 환영하는 소통의 장으로서, 약 40년 간의 역사를 이어가고 있습니다.
           </h1>
+          {/* 이미지 경로를 절대 경로로 수정하여 public 폴더의 images/9.png 파일을 참조 */}
           <img
-            src="images/9.png"
-            className="w-2/3 sm:w-1/3 max-w-xs mx-auto mt-4"
+            src="/images/9.png"
+            className="mx-auto mt-4 w-auto h-auto max-w-[150px] sm:max-w-[200px] md:max-w-[300px]"
             alt="SGCC 로고"
           />
           <h1 className="text-lg sm:text-2xl font-bold mt-6">"초보자들을 위한 사다리"</h1>
@@ -161,13 +165,16 @@ export default function CalendarPage() {
           </h1>
         </div>
 
-        {/* 연도 변경 버튼 */}
-        <YearSelector year={year} onChange={(direction) => setYear(year + direction)} />
+        <YearSelector
+          year={year}
+          onChange={(direction) => setYear(year + direction)}
+        />
 
-        {/* 캘린더 */}
-        <CalendarGrid onSelectMonth={setSelectedMonth} selectedMonth={selectedMonth} />
+        <CalendarGrid
+          onSelectMonth={setSelectedMonth}
+          selectedMonth={selectedMonth}
+        />
 
-        {/* 이벤트 박스 */}
         <EventBox selectedMonth={selectedMonth} year={year} />
       </main>
     </div>
