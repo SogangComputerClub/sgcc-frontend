@@ -19,7 +19,7 @@ const Main = () => {
     }, [currentIndex]);
 
     return (
-        <div className="w-full">
+        <div className="w-full font-sogang">
             {/* 슬라이드 배너 */}
             <div className="relative w-full h-[500px] overflow-hidden">
                 {images.map((src, index) => (

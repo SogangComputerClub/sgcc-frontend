@@ -3,7 +3,7 @@ import { FaInstagram, FaYoutube, FaGithub } from 'react-icons/fa';
 
 const Footer = () => {
     return (
-        <footer className="bg-black text-white py-6">
+        <footer className="bg-black text-white py-6 font-sogang">
             <div className="container mx-auto px-6">
                 <p className="font-semibold">Made by SGCC</p>
 

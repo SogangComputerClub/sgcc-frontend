@@ -13,7 +13,7 @@ const Header = () => {
 
     return (
         <header className="bg-black text-white py-4">
-            <nav className="container mx-auto flex items-center justify-between px-5">
+            <nav className="container mx-auto flex items-center justify-between px-5 font-sogang">
                 {/* ✅ 로고 (왼쪽 정렬) */}
                 <Link to="/">
                     <img src="/images/sgcc.png" className="w-16 h-auto" alt="SGCC 로고" />

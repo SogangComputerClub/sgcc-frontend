@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+@layer utilities {
+  .font-sogang {
+    font-family: 'SOGANGUNIVERSITYTTF', sans-serif;
+  }
+}
+
 .App {
   text-align: center;
 }
