@@ -15,7 +15,7 @@ const events = {
 
 function Sidebar() {
   return (
-    <aside className="bg- text-white p-5 rounded-2xl justify-items-center">
+    <aside className="bg-gray-800 text-white p-5 rounded-2xl justify-items-center">
       <h2 className="text-lg font-semibold">Contents</h2>
       <nav className="mt-4">
         <p className="py-2 cursor-pointer">인사말</p>
