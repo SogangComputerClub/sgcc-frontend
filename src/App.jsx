@@ -14,6 +14,7 @@ import BoardDetail from './pages/Board/BoardDetail';
 import LibraryBorrow from './pages/Library/LibraryBorrow';
 import LibraryDetail from './pages/Library/LibraryDetail';
 import LibraryRegister from './pages/Library/LibraryRegister';
+import AboutUsPage from './pages/AboutUs/AboutUsPage';
 // core styles shared by all of react-notion-x (required)
 import 'react-notion-x/src/styles.css'
 // used for code syntax highlighting (optional)
@@ -41,6 +42,7 @@ function App() {
             <Route path='/LibraryBorrow' element={<LibraryBorrow />} />
             <Route path="/LibraryDetail" element={<LibraryDetail />} />
             <Route path='/LibraryRegister' element={<LibraryRegister />} />
+            <Route path='/AboutUsPage' element={<AboutUsPage />} />
           </Routes>
           <Footer />
         </Router>
