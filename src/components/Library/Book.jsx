@@ -5,7 +5,7 @@ const Book = ({ viewMode, onClick, title, author, publisher, year, copies, descr
     <div>
       {viewMode === "card" ? (
         <div
-          className="p-6 border rounded-lg min-w-[1000px] min-h-[850px] flex flex-col bg-white cursor-pointer"
+          className="p-6 border rounded-lg min-w-[1000px] h-[900px] flex flex-col bg-white cursor-pointer"
           onClick={() => {
             console.log("Book clicked!");
             if (onClick) onClick();
@@ -22,8 +22,9 @@ const Book = ({ viewMode, onClick, title, author, publisher, year, copies, descr
           </div>
 
           {/* 책 제목과 설명 스타일 변경 */}
-          <h2 className="text-xl font-bold mb-2">{title}</h2>
-          <p className="text-sm text-gray-600">{author}  |  {publisher}  |  {year}년  |  {copies}권</p>
+          <h2 className="text-lg font-bold text-gray-800 truncate w-full">
+            {title}
+          </h2>          <p className="text-sm text-gray-600">{author}  |  {publisher}  |  {year}년  |  {copies}권</p>
           <p className="text-sm text-gray-500 mt-2">
             {description && description.length > 60 ? description.substring(0, 60) + "..." : description}
           </p>
