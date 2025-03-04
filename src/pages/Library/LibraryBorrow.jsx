@@ -3,130 +3,33 @@ import Book from '../../components/Library/Book';
 import { useNavigate } from 'react-router-dom';
 import books from '../../components/Library/BookList';
 
-// // 📌 더미 데이터 (백엔드 연결 전, 12개 책 정보)
-// const bookData = [
-//   {
-//     title: "자바스크립트 입문",
-//     author: "홍길동",
-//     publisher: "출판사 A",
-//     year: 2021,
-//     copies: 3,
-//     discription: "aa",
-//     isAvailable: true,
-//   },
-//   {
-//     title: "리액트 정복",
-//     author: "이순신",
-//     publisher: "출판사 B",
-//     year: 2022,
-//     copies: 2,
-//     discription: "aa",
-//     isAvailable: true,
-//   },
-//   {
-//     title: "타입스크립트 시작하기",
-//     author: "김철수",
-//     publisher: "출판사 C",
-//     year: 2023,
-//     copies: 1, discription: "aa",
-//     isAvailable: true,
-//   },
-//   {
-//     title: "웹 개발의 모든 것",
-//     author: "박영희",
-//     publisher: "출판사 D",
-//     year: 2020,
-//     copies: 4, discription: "aa",
-//     isAvailable: true,
-//   },
-//   {
-//     title: "자바스크립트 입문",
-//     author: "홍길동",
-//     publisher: "출판사 A",
-//     year: 2021,
-//     copies: 3, discription: "aa",
-//     isAvailable: false,
-//   },
-//   {
-//     title: "리액트 정복",
-//     author: "이순신",
-//     publisher: "출판사 B",
-//     year: 2022,
-//     copies: 2, discription: "aa",
-//     isAvailable: false,
-//   },
-//   {
-//     title: "타입스크립트 시작하기",
-//     author: "김철수",
-//     publisher: "출판사 C",
-//     year: 2023,
-//     copies: 1, discription: "aa",
-//     isAvailable: false,
-//   },
-//   {
-//     title: "웹 개발의 모든 것",
-//     author: "박영희",
-//     publisher: "출판사 D",
-//     year: 2020,
-//     copies: 4, discription: "aa",
-//     isAvailable: false,
-//   },
-//   {
-//     title: "자바스크립트 입문",
-//     author: "홍길동",
-//     publisher: "출판사 A",
-//     year: 2021,
-//     copies: 3, discription: "aa",
-//     isAvailable: false,
-//   },
-//   {
-//     title: "리액트 정복",
-//     author: "이순신",
-//     publisher: "출판사 B",
-//     year: 2022,
-//     copies: 2, discription: "aa",
-//     isAvailable: false,
-//   },
-//   {
-//     title: "타입스크립트 시작하기",
-//     author: "김철수",
-//     publisher: "출판사 C",
-//     year: 2023,
-//     copies: 1, discription: "aa",
-//     isAvailable: false,
-//   },
-//   {
-//     title: "웹 개발의 모든 것",
-//     author: "박영희",
-//     publisher: "출판사 D",
-//     year: 2020,
-//     copies: 4, discription: "aa",
-//     isAvailable: false,
-//   },
-
-
-// ];
-
-//라이브러리 화면 처음 들어갔을 때 보이는 화면
-//list형의 책 정보들이 4개씩 보이게 해야함 - 벡이랑 연결하기 전에는 12개만 만들어 놓자
 const LibraryBorrow = () => {
   const navigate = useNavigate();
+  const [activeTab, setActiveTab] = useState("전체");
+
+  // 책 클릭 시 상세 페이지로 이동
   const handleBookClick = (book) => {
     console.log('Navigating to LibraryDetail with book data');
     navigate('/libraryDetail', { state: { bookData: book } });
   };
+
+  // 등록 버튼 클릭 시 이동
   const handleButtonClick = () => {
     navigate('/libraryRegister');
-  }
-  const [activeTab, setActiveTab] = useState("전체");
+  };
+
+  // 필터링된 책 목록 (대여 가능 필터 적용)
   const filteredBooks = activeTab === "대여 가능"
     ? books.filter(book => book.isAvailable)
     : books;
+
   return (
     <div className="relative w-full p-5">
-      <h1 className="text-2xl font-extrabold flex justify-center mb-4 ">도서 목록</h1>
+      {/* 도서 목록 제목 */}
+      <h1 className="text-2xl font-extrabold flex justify-center mb-4">도서 목록</h1>
 
-      <div className="flex justify-center gap-3">
+      {/* 탭 버튼 (전체 / 대여 가능) */}
+      <div className="flex justify-center gap-3 flex-wrap">
         <button
           className={`text-sm w-auto px-3 py-1 rounded-md font-semibold ${activeTab === "전체" ? "text-black" : "text-gray-400"
             }`}
@@ -134,7 +37,7 @@ const LibraryBorrow = () => {
         >
           전체
         </button>
-        <p className='text-gray-400'>|</p>
+        <p className='text-gray-400 hidden sm:block'>|</p>
         <button
           className={`text-sm w-auto px-3 py-1 rounded-md font-semibold ${activeTab === "대여 가능" ? "text-black" : "text-gray-400"
             }`}
@@ -143,18 +46,18 @@ const LibraryBorrow = () => {
           대여 가능
         </button>
       </div>
-      <div>
-        <button
-          className="sticky top-27 left-330 text-sm w-auto px-3 py-1 rounded-md font-semibold bg-gray-500 text-white cursor-pointer"
-          onClick={handleButtonClick}
-        >
-          등록
-        </button>
-      </div>
 
+      {/* 등록 버튼 (우측 하단 고정) */}
+      <button
+        className="fixed top-28 right-6 md:right-10 px-4 py-2 bg-gray-500 text-white rounded-md shadow-lg hover:bg-gray-700 transition"
+        onClick={handleButtonClick}
+      >
+        등록
+      </button>
 
-      <div className="w-auto h-auto px-5 flex justify-center mt-5">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      {/* 도서 목록 (반응형 적용) */}
+      <div className="w-full flex justify-center mt-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {filteredBooks.map((book, index) => (
             <Book
               key={index}
@@ -162,7 +65,8 @@ const LibraryBorrow = () => {
               viewMode="list"
               {...book}
             />
-          ))}                </div>
+          ))}
+        </div>
       </div>
     </div>
   );

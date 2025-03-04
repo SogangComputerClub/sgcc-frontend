@@ -16,42 +16,35 @@ const LibraryDetail = () => {
   const selectedBook = books.find((book) => book.title === bookData?.title) || {};
 
   return (
-    <div className="flex h-screen w-full">
-      {/* 📌 좌측 - 책 목록 */}
-      <div className="w-1/4 bg-gray-100 p-4 overflow-y-auto border-r border-gray-300">
+    <div className="flex flex-col md:flex-row h-screen w-full">
+      {/* 📌 좌측 - 책 목록 (모바일에서는 숨김) */}
+      <div className="hidden md:block md:w-1/4 bg-gray-100 p-4 overflow-y-auto border-r border-gray-300">
         {books.map((book, index) => (
           <Book key={index} viewMode="list" {...book} />
         ))}
       </div>
 
       {/* 📌 중앙 - 책 상세 정보 */}
-      <div className="w-2/4 p-6 flex flex-col justify-start space-y-4">
-        {/* 대여 상태 표시 */}
-        <div className="flex justify-between items-center">
-          <label className="flex items-center cursor-pointer">
-            <input type="checkbox" className="hidden" disabled />
-          </label>
-        </div>
-
+      <div className="w-full md:w-2/4 p-6 flex flex-col justify-start space-y-4">
         {/* 책 제목 및 설명 */}
-        <h1 className="text-2xl font-bold">{selectedBook?.title || "책 정보 없음"}</h1>
+        <h1 className="text-xl sm:text-2xl font-bold">{selectedBook?.title || "책 정보 없음"}</h1>
         <p className="text-sm text-gray-500">{selectedBook?.author} | {selectedBook?.publisher} | {selectedBook?.year}</p>
         <p className="text-gray-600">{selectedBook?.description || "책 설명이 없습니다."}</p>
 
         {/* 책 이미지 */}
-        <div className="grid grid-cols-3 gap-4 mt-4">
+        <div className="flex justify-center">
           {selectedBook?.image ? (
-            <img src={selectedBook.image} alt="책 이미지" className="w-[300px] h-[300px] rounded-lg shadow-md" />
+            <img src={selectedBook.image} alt="책 이미지" className="w-full max-w-xs rounded-lg shadow-md" />
           ) : (
             <p className="text-gray-500">책 이미지가 없습니다.</p>
           )}
         </div>
       </div>
 
-      {/* 📌 우측 - 사용자 정보 입력 및 대여 버튼 (위치 수정됨) */}
-      <div className="w-1/4 p-6 border-l border-gray-300 flex flex-col justify-start space-y-6">
-        {/* 닫기 버튼 */}
-        <Link to="/libraryBorrow" className="absolute top-17 right-6 text-gray-600 text-2xl font-bold">
+      {/* 📌 우측 - 사용자 정보 입력 및 대여 버튼 */}
+      <div className="w-full md:w-1/4 p-6 border-l border-gray-300 flex flex-col justify-start space-y-6">
+        {/* 닫기 버튼 (반응형 위치 수정) */}
+        <Link to="/libraryBorrow" className="fixed top-4 right-4 sm:right-6 text-gray-600 text-2xl font-bold">
           ✖
         </Link>
 
@@ -87,18 +80,18 @@ const LibraryDetail = () => {
               placeholder="학번을 입력하세요"
             />
           </div>
-          <div className="flex justify-center mt-6">
-            <Link to="/libraryBorrow">
-              <button
-                type="button"
-                className="bg-gray-900 hover:bg-gray-700 text-white font-bold px-6 py-3 rounded-md shadow-md transition-all duration-300"
+        </div>
 
-              >
-                대여하기
-              </button>
-            </Link>
-          </div>
-
+        {/* 대여하기 버튼 */}
+        <div className="flex justify-center mt-6">
+          <Link to="/libraryBorrow">
+            <button
+              type="button"
+              className="w-full sm:w-auto bg-gray-900 hover:bg-gray-700 text-white font-bold px-6 py-3 rounded-md shadow-md transition-all duration-300"
+            >
+              대여하기
+            </button>
+          </Link>
         </div>
       </div>
     </div>
