@@ -19,7 +19,7 @@ const Main = () => {
     }, [currentIndex]);
 
     return (
-        <div className="relative w-full h-[500px] overflow-hidden">
+        <div className="relative w-full h-[500px] overflow-hidden font-sogang">
             {/* 이미지 슬라이드 */}
             {images.map((src, index) => (
                 <img
