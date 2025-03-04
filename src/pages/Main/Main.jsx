@@ -13,7 +13,7 @@ const Main = () => {
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-        }, 2000);
+        }, 3000);
 
         return () => clearInterval(interval);
     }, [currentIndex]);
