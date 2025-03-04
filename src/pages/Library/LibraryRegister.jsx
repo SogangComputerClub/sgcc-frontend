@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Book from '../../components/Library/Book';
+import books from '../components/Library/BookList';
 
 
 const LibraryRegister = () => {
@@ -61,9 +62,9 @@ const LibraryRegister = () => {
             <div className="bg-white shadow-lg rounded-lg p-10 w-full max-w-4xl">
                 <h2 className="text-3xl font-bold text-center mb-6">도서 등록</h2>
 
-                <div className="grid grid-cols-2 gap-10">
+                <div className>
                     {/* 📋 입력 폼 (왼쪽) */}
-                    <div className="space-y-4">
+                    <div className>
                         <div>
                             <label htmlFor="title" className="block font-semibold text-gray-700">
                                 책 제목*
@@ -76,6 +77,8 @@ const LibraryRegister = () => {
                                 onChange={handleChange}
                                 className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-gray-600"
                                 required
+                                placeholder="책 제목을 입력하세요"
+
                             />
                             {errors.title && <p className="text-red-500 text-sm mt-1">{errors.title}</p>}
                         </div>
@@ -92,6 +95,7 @@ const LibraryRegister = () => {
                                 onChange={handleChange}
                                 className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-gray-600"
                                 required
+                                placeholder="저자를 입력하세요"
                             />
                             {errors.author && <p className="text-red-500 text-sm mt-1">{errors.author}</p>}
                         </div>
@@ -135,15 +139,12 @@ const LibraryRegister = () => {
                                 name="description"
                                 value={bookData.description}
                                 onChange={handleChange}
+                                placeholder="설명을 입력하세요"
                                 className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-gray-600 h-20"
                             />
                         </div>
-                    </div>
-
-                    {/* 📷 이미지 업로드 및 등록 버튼 (오른쪽) */}
-                    <div className="space-y-4">
                         <label className="block font-semibold text-gray-700">이미지</label>
-                        <div className="grid grid-cols-4 gap-4">
+                        <div className="grid grid-cols-4 gap-2">
                             {[...Array(4)].map((_, index) => (
                                 <div key={index} className="w-20 h-20 border border-gray-300 rounded-lg flex items-center justify-center">
                                     {selectedImages[index] ? (
@@ -154,16 +155,13 @@ const LibraryRegister = () => {
                                 </div>
                             ))}
                         </div>
-                        {/* 파일 선택 버튼 */}
                         <div className="flex justify-start mt-2">
                             <input type="file" accept="image/*" multiple onChange={handleImageChange} className="hidden" id="fileUpload" />
                             <label htmlFor="fileUpload" className="cursor-pointer bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-md shadow-md">
                                 파일 선택
                             </label>
                         </div>
-
-                        {/* 오른쪽 정렬된 등록 버튼 */}
-                        <div className="flex justify-end mt-6">
+                        <div className="flex justify-center mt-6">
                             <Link to="/libraryBorrow">
                                 <button
                                     type="button"
@@ -173,7 +171,10 @@ const LibraryRegister = () => {
                                 </button>
                             </Link>
                         </div>
+
+
                     </div>
+
                 </div>
             </div>
         </div>

@@ -1,114 +1,115 @@
 import React, { useState } from 'react';
 import Book from '../../components/Library/Book';
 import { useNavigate } from 'react-router-dom';
+import books from '../components/Library/BookList';
 
-// 📌 더미 데이터 (백엔드 연결 전, 12개 책 정보)
-const bookData = [
-  {
-    title: "자바스크립트 입문",
-    author: "홍길동",
-    publisher: "출판사 A",
-    year: 2021,
-    copies: 3,
-    discription: "aa",
-    isAvailable: true,
-  },
-  {
-    title: "리액트 정복",
-    author: "이순신",
-    publisher: "출판사 B",
-    year: 2022,
-    copies: 2,
-    discription: "aa",
-    isAvailable: true,
-  },
-  {
-    title: "타입스크립트 시작하기",
-    author: "김철수",
-    publisher: "출판사 C",
-    year: 2023,
-    copies: 1, discription: "aa",
-    isAvailable: true,
-  },
-  {
-    title: "웹 개발의 모든 것",
-    author: "박영희",
-    publisher: "출판사 D",
-    year: 2020,
-    copies: 4, discription: "aa",
-    isAvailable: true,
-  },
-  {
-    title: "자바스크립트 입문",
-    author: "홍길동",
-    publisher: "출판사 A",
-    year: 2021,
-    copies: 3, discription: "aa",
-    isAvailable: false,
-  },
-  {
-    title: "리액트 정복",
-    author: "이순신",
-    publisher: "출판사 B",
-    year: 2022,
-    copies: 2, discription: "aa",
-    isAvailable: false,
-  },
-  {
-    title: "타입스크립트 시작하기",
-    author: "김철수",
-    publisher: "출판사 C",
-    year: 2023,
-    copies: 1, discription: "aa",
-    isAvailable: false,
-  },
-  {
-    title: "웹 개발의 모든 것",
-    author: "박영희",
-    publisher: "출판사 D",
-    year: 2020,
-    copies: 4, discription: "aa",
-    isAvailable: false,
-  },
-  {
-    title: "자바스크립트 입문",
-    author: "홍길동",
-    publisher: "출판사 A",
-    year: 2021,
-    copies: 3, discription: "aa",
-    isAvailable: false,
-  },
-  {
-    title: "리액트 정복",
-    author: "이순신",
-    publisher: "출판사 B",
-    year: 2022,
-    copies: 2, discription: "aa",
-    isAvailable: false,
-  },
-  {
-    title: "타입스크립트 시작하기",
-    author: "김철수",
-    publisher: "출판사 C",
-    year: 2023,
-    copies: 1, discription: "aa",
-    isAvailable: false,
-  },
-  {
-    title: "웹 개발의 모든 것",
-    author: "박영희",
-    publisher: "출판사 D",
-    year: 2020,
-    copies: 4, discription: "aa",
-    isAvailable: false,
-  },
+// // 📌 더미 데이터 (백엔드 연결 전, 12개 책 정보)
+// const bookData = [
+//   {
+//     title: "자바스크립트 입문",
+//     author: "홍길동",
+//     publisher: "출판사 A",
+//     year: 2021,
+//     copies: 3,
+//     discription: "aa",
+//     isAvailable: true,
+//   },
+//   {
+//     title: "리액트 정복",
+//     author: "이순신",
+//     publisher: "출판사 B",
+//     year: 2022,
+//     copies: 2,
+//     discription: "aa",
+//     isAvailable: true,
+//   },
+//   {
+//     title: "타입스크립트 시작하기",
+//     author: "김철수",
+//     publisher: "출판사 C",
+//     year: 2023,
+//     copies: 1, discription: "aa",
+//     isAvailable: true,
+//   },
+//   {
+//     title: "웹 개발의 모든 것",
+//     author: "박영희",
+//     publisher: "출판사 D",
+//     year: 2020,
+//     copies: 4, discription: "aa",
+//     isAvailable: true,
+//   },
+//   {
+//     title: "자바스크립트 입문",
+//     author: "홍길동",
+//     publisher: "출판사 A",
+//     year: 2021,
+//     copies: 3, discription: "aa",
+//     isAvailable: false,
+//   },
+//   {
+//     title: "리액트 정복",
+//     author: "이순신",
+//     publisher: "출판사 B",
+//     year: 2022,
+//     copies: 2, discription: "aa",
+//     isAvailable: false,
+//   },
+//   {
+//     title: "타입스크립트 시작하기",
+//     author: "김철수",
+//     publisher: "출판사 C",
+//     year: 2023,
+//     copies: 1, discription: "aa",
+//     isAvailable: false,
+//   },
+//   {
+//     title: "웹 개발의 모든 것",
+//     author: "박영희",
+//     publisher: "출판사 D",
+//     year: 2020,
+//     copies: 4, discription: "aa",
+//     isAvailable: false,
+//   },
+//   {
+//     title: "자바스크립트 입문",
+//     author: "홍길동",
+//     publisher: "출판사 A",
+//     year: 2021,
+//     copies: 3, discription: "aa",
+//     isAvailable: false,
+//   },
+//   {
+//     title: "리액트 정복",
+//     author: "이순신",
+//     publisher: "출판사 B",
+//     year: 2022,
+//     copies: 2, discription: "aa",
+//     isAvailable: false,
+//   },
+//   {
+//     title: "타입스크립트 시작하기",
+//     author: "김철수",
+//     publisher: "출판사 C",
+//     year: 2023,
+//     copies: 1, discription: "aa",
+//     isAvailable: false,
+//   },
+//   {
+//     title: "웹 개발의 모든 것",
+//     author: "박영희",
+//     publisher: "출판사 D",
+//     year: 2020,
+//     copies: 4, discription: "aa",
+//     isAvailable: false,
+//   },
 
 
-];
+// ];
 
 //라이브러리 화면 처음 들어갔을 때 보이는 화면
 //list형의 책 정보들이 4개씩 보이게 해야함 - 벡이랑 연결하기 전에는 12개만 만들어 놓자
-const LibraryBorrow = () => {
+const LibraryBorrow = (book) => {
   const navigate = useNavigate();
   const handleBookClick = (book) => {
     console.log('Navigating to LibraryDetail with book data');
@@ -119,8 +120,8 @@ const LibraryBorrow = () => {
   }
   const [activeTab, setActiveTab] = useState("전체");
   const filteredBooks = activeTab === "대여 가능"
-    ? bookData.filter(book => book.isAvailable)
-    : bookData;
+    ? books.filter(book => book.isAvailable)
+    : books;
   return (
     <div className="relative w-full p-5">
       <h1 className="text-2xl font-extrabold flex justify-center mb-4 ">도서 목록</h1>
@@ -144,7 +145,7 @@ const LibraryBorrow = () => {
       </div>
       <div>
         <button
-          className="text-sm w-auto px-3 py-1 rounded-md font-semibold bg-gray-500 text-white cursor-pointer"
+          className="sticky top-27 left-330 text-sm w-auto px-3 py-1 rounded-md font-semibold bg-gray-500 text-white cursor-pointer"
           onClick={handleButtonClick}
         >
           등록
@@ -153,7 +154,7 @@ const LibraryBorrow = () => {
 
 
       <div className="w-auto h-auto px-5 flex justify-center mt-5">
-        <div className="grid grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {filteredBooks.map((book, index) => (
             <Book
               key={index}
