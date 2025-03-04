@@ -9,8 +9,22 @@ const Header = () => {
     }, [isLoggedIn]);
     return (
         <header className="bg-black text-white py-4">
-            <nav>
+            <nav className="container mx-auto flex items-center justify-between px-5">
+                {/* ✅ 로고 (왼쪽 정렬) */}
+                <Link to="/">
+                    <img src="/images/sgcc.png" className="w-16 h-auto" alt="SGCC 로고" />
+                </Link>
+
+                {/* ✅ 네비게이션 메뉴 */}
+                <ul className="flex space-x-6">
+                    <li><Link to="/BoardDetail">Board</Link></li>
+                    <li><Link to="/BoardDetail">Study</Link></li>
+                    <li><Link to="/LibraryBorrow" className="font-bold">Library</Link></li>
+                </ul>
+
+                {/* ✅ 로그인 상태에 따른 버튼 */}
                 {isLoggedIn ? (
+<<<<<<< Updated upstream
                     <ul className="flex justify-end space-x-5 px-5">
                         <li>
                             <Link to="/">홈으로 돌아가기</Link>
@@ -22,21 +36,19 @@ const Header = () => {
                             <button onClick={logout}>로그아웃</button>
                         </li>
                     </ul>
+=======
+                    <div className="flex space-x-5">
+                        <Link to="/mypage">마이페이지</Link>
+                        <button onClick={logout} className="bg-red-600 px-4 py-2 rounded">로그아웃</button>
+                    </div>
+>>>>>>> Stashed changes
                 ) : (
-                    <ul className="flex justify-end space-x-5 px-5">
-                        <li>
-                            <Link to="/">홈으로 돌아가기</Link>
-                        </li>
-                        <li>
-                            <Link to="/signup">회원가입</Link>
-                        </li>
-                        <li>
-                            <Link to="/login">로그인하기</Link>
-                        </li>
-                    </ul>
+                    <div className="flex space-x-5">
+                        <Link to="/signup" className="text-gray-400">회원가입</Link>
+                        <Link to="/login" className="text-white">로그인하기</Link>
+                    </div>
                 )}
             </nav>
-        </header>
-    )
+        </header>)
 }
 export default Header;
