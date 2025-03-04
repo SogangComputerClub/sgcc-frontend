@@ -32,7 +32,7 @@ const Footer = () => {
                             <a href="https://www.youtube.com/channel/UCa4ws7-hKJCj5BEw0Okv5ag" target="_blank" rel="noopener noreferrer">
                                 <FaYoutube className="text-2xl hover:text-gray-300 transition" />
                             </a>
-                            <a href="https://github.com/Sogang-Computer-Club" target="_blank" rel="noopener noreferrer">
+                            <a href="https://github.com/SogangComputerClub" target="_blank" rel="noopener noreferrer">
                                 <FaGithub className="text-2xl hover:text-gray-300 transition" />
                             </a>
                         </div>
