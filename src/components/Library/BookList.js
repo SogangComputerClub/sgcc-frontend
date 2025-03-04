@@ -8,7 +8,7 @@ const books = [
         copies: '1',
         description: "",
         isAvailable: true,
-        image: "",
+        image: "/images/1.png",
     },
     {
         id: 2,
@@ -19,7 +19,7 @@ const books = [
         copies: '1',
         description: "",
         isAvailable: true,
-        image: "",
+        image: "/images/2.png",
 
     },
     {
@@ -31,7 +31,7 @@ const books = [
         copies: '1',
         description: "",
         isAvailable: true,
-        image: "",
+        image: "/images/3.png",
 
     },
     {
@@ -43,7 +43,7 @@ const books = [
         copies: '1',
         description: "",
         isAvailable: true,
-        image: "",
+        image: "/images/4.png",
 
     },
     {
@@ -55,7 +55,7 @@ const books = [
         copies: '1',
         description: "",
         isAvailable: true,
-        image: "",
+        image: "/images/5.png",
 
     },
     {
@@ -67,7 +67,7 @@ const books = [
         copies: '1',
         description: "",
         isAvailable: true,
-        image: "",
+        image: "/images/6.png",
 
     },
     {
@@ -79,7 +79,7 @@ const books = [
         copies: '1',
         description: "",
         isAvailable: true,
-        image: "",
+        image: "/images/7.png",
 
     },
     {
@@ -91,7 +91,7 @@ const books = [
         copies: '1',
         description: "",
         isAvailable: true,
-        image: "",
+        image: "/images/8.png",
 
     },
 
