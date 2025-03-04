@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Book from '../../components/Library/Book';
 import { useNavigate } from 'react-router-dom';
-import books from '../components/Library/BookList';
+import books from '../../components/Library/BookList';
 
 // // 📌 더미 데이터 (백엔드 연결 전, 12개 책 정보)
 // const bookData = [

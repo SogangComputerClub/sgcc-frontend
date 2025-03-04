@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 //useLocation: returns the current location object
 import Book from '../../components/Library/Book';
 import { Link } from 'react-router-dom';
-import books from '../components/Library/BookList';
+import books from '../../components/Library/BookList';
 
 const LibraryDetail = () => {
   // Retrieve the state passed via navigation
