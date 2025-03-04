@@ -44,7 +44,7 @@ const LibraryDetail = () => {
       {/* 📌 우측 - 사용자 정보 입력 및 대여 버튼 */}
       <div className="w-full md:w-1/4 p-6 border-l border-gray-300 flex flex-col justify-start space-y-6">
         {/* 닫기 버튼 (반응형 위치 수정) */}
-        <Link to="/libraryBorrow" className="fixed top-4 right-4 sm:right-6 text-gray-600 text-2xl font-bold">
+        <Link to="/libraryBorrow" className="fixed top-16 right-4 sm:right-6 text-gray-600 text-2xl font-bold">
           ✖
         </Link>
 
