@@ -1,6 +1,4 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import './App.css';
-import './index.css';
 import Header from './components/header';
 import Footer from './components/footer';
 import Login from './pages/Login/Login';
@@ -21,6 +19,7 @@ import 'react-notion-x/src/styles.css'
 import 'prismjs/themes/prism-tomorrow.css'
 // used for rendering equations (optional)
 import 'katex/dist/katex.min.css'
+import './App.css';
 
 function App() {
   return (
