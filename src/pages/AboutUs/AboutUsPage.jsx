@@ -6,14 +6,16 @@ const months = [
 
 const events = {
   "2025": {
-    "2월": [{ date: "02.24 - 03.09", title: "신입부원 모집", details: "새학기 준비" }
-      , { date: "03.06 - 03.07", title: "동아리 거리제", details: "학교 공식 일정" }
-      , { date: "03.03 - 03.12", title: "개강총회 수요조사", details: "새학기 준비" }
-      , { date: "03.14", title: "개강총회", details: "개강총회" }
+    "2월": [{ date: "02.24 - 03.09", title: "신입부원 모집", details: "새학기 준비" }],
+    "3월": [{ date: "02.24 - 03.09", title: "신입부원 모집", details: "새학기 준비" }
       , { date: "03.01 - 03.14", title: "회비 납부 기간", details: "새학기 준비" }
+      , { date: "03.03 - 03.12", title: "개강총회 수요조사", details: "새학기 준비" }
       , { date: "03.04", title: "개강", details: "학교 공식 일정" }
+      , { date: "03.06 - 03.07", title: "동아리 거리제", details: "학교 공식 일정" }
       , { date: "03.10", title: "신입부원 합격 발표", details: "새학기 준비" }
       , { date: "03.10 - 03.15", title: "세션 및 스터디 수요조사", details: "세션 및 스터디" }
+      , { date: "03.14", title: "개강총회", details: "개강총회" }
+
       , { date: "03.17", title: "세션 및 스터디 시작", details: "세션 및 스터디" }
     ]
   },
