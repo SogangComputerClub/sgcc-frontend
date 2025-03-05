@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 
 const images = [
@@ -54,9 +55,10 @@ const Main = () => {
             <div className="bg-gradient-to-b from-gray-900 to-black text-white py-20 px-6 text-center">
                 <h2 className="text-4xl font-bold mb-6">About SGCC</h2>
                 <p className="text-lg max-w-3xl mx-auto leading-relaxed">
-                    SGCC는 1982년에 창립된 서강대학교 중앙 컴퓨터 동아리입니다. Python, C 언어 등 기초 프로그래밍
-                    언어뿐만 아니라 유니티, 언리얼엔진, 웹, 알고리즘 등 여러 분야에서의 스터디를 진행하며 부원들의 기술적
-                    역량을 향상시키는 것을 목표로 노력하고 있습니다.
+                    {`SGCC는 1982년에 창립된 서강대학교 중앙 컴퓨터 동아리입니다.
+                     Python, C 언어 등 기초 프로그래밍 언어뿐만 아니라
+                     유니티, 언리얼엔진, 웹, 알고리즘 등 여러 분야에서의 스터디를 진행하며
+                     부원들의 기술적 역량을 향상시키는 것을 목표로 노력하고 있습니다.`}
                 </p>
                 <h2 className="text-4xl font-bold mt-12 mb-6">Recruiting</h2>
                 <div className="flex justify-center items-center">

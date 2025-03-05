@@ -14,6 +14,8 @@ import LibraryDetail from './pages/Library/LibraryDetail';
 import LibraryRegister from './pages/Library/LibraryRegister';
 import AboutUsPage from './pages/AboutUs/AboutUsPage';
 import MainPage from './pages/Main/Main';
+import Study from './pages/Study/Study';
+
 // core styles shared by all of react-notion-x (required)
 import 'react-notion-x/src/styles.css'
 // used for code syntax highlighting (optional)
@@ -44,6 +46,7 @@ function App() {
             <Route path='/LibraryRegister' element={<LibraryRegister />} />
             <Route path='/AboutUsPage' element={<AboutUsPage />} />
             <Route path='/' element={<MainPage />} />
+            <Route path='/Study' element={<Study />} />
           </Routes>
           <Footer />
         </Router>

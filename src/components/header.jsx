@@ -23,19 +23,19 @@ const Header = () => {
                 <ul className="hidden md:flex space-x-6">
                     <li><Link to="/AboutUsPage" className="hover:font-bold">About Us</Link></li>
                     <li><Link to="/BoardDetail" className="hover:font-bold">Board</Link></li>
-                    <li><Link to="/BoardDetail" className="hover:font-bold">Study</Link></li>
+                    <li><Link to="/Study" className="hover:font-bold">Study</Link></li>
                     <li><Link to="/LibraryBorrow" className="hover:font-bold">Library</Link></li>
                 </ul>
 
                 {/* ✅ 로그인 상태에 따른 버튼 (데스크탑) */}
-                <div className="hidden md:flex space-x-5">
+                <div className="hidden md:flex space-x-10">
                     {isLoggedIn ? (
                         <>
                             <Link to="/mypage">마이페이지</Link>
-                            <button onClick={logout} className="bg-red-600 px-4 py-2 rounded">로그아웃</button>
+                            <button onClick={logout} className="text-white px-4 py-2 rounded hover:font-bolds">로그아웃</button>
                         </>
                     ) : (
-                        <Link to="/login" className="bg-gray-800 text-white px-4 py-2 rounded">Log in</Link>
+                        <Link to="/login" className=" text-white px-4 py-2 rounded hover:font-bold">Log in</Link>
                     )}
                 </div>
 
@@ -63,7 +63,7 @@ const Header = () => {
                             </>
                         ) : (
                             <li>
-                                <Link to="/login" className="bg-gray-800 text-white px-4 py-2 rounded" onClick={() => setMenuOpen(false)}>Log in</Link>
+                                <Link to="/login" className="text-white px-4 py-2 rounded" onClick={() => setMenuOpen(false)}>Log in</Link>
                             </li>
                         )}
                     </ul>
