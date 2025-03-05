@@ -36,7 +36,7 @@ const BoardDetail = () => {
 
     return (
         <div className="h-auto bg-gray-100 flex justify-center py-3">
-            <div className="w-full max-w-7xl bg-white rounded-lg shadow-md p-6 flex space-x-6">
+            <div className="w-192 max-w-8xl bg-white rounded-lg shadow-md p-6 flex space-x-6 justify-items-center">
 
                     {loading ? (
                         <div>Loading post...</div>
