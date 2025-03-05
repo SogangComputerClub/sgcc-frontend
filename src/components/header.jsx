@@ -20,15 +20,15 @@ const Header = () => {
                 </Link>
 
                 {/* ✅ 데스크탑 메뉴 (md 이상에서 보임) */}
-                <ul className="hidden md:flex space-x-6">
-                    <li><Link to="/AboutUsPage" className="hover:font-bold">About Us</Link></li>
+                <ul className="hidden md:flex space-x-6 z-index: <10000>">
+                    <li><Link to="/AboutUsPage" className="hover:font-bold ;">About Us</Link></li>
                     <li><Link to="/BoardDetail" className="hover:font-bold">Board</Link></li>
                     <li><Link to="/Study" className="hover:font-bold">Study</Link></li>
                     <li><Link to="/LibraryBorrow" className="hover:font-bold">Library</Link></li>
                 </ul>
 
                 {/* ✅ 로그인 상태에 따른 버튼 (데스크탑) */}
-                <div className="hidden md:flex space-x-10">
+                <div className="hidden md:flex space-x-10 z-index: <10000>">
                     {isLoggedIn ? (
                         <>
                             <Link to="/mypage">마이페이지</Link>
