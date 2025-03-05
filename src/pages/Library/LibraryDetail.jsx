@@ -1,52 +1,99 @@
-import React from 'react';
-import { useLocation } from 'react-router-dom';
-//useLocation: returns the current location objext
+import React, { useState } from 'react';
+import { useLocation, Link } from 'react-router-dom';
 import Book from '../../components/Library/Book';
-
+import books from '../../components/Library/BookList';
 
 const LibraryDetail = () => {
-  // Retrieve the state passed via navigation
-  const location = useLocation();
-  const { bookData } = location.state || {};
-  const BookData = { //나중에 벡에서 데이터를 불러올 수 있으면 이부분을 libraryBorrow의 맨 위 두개의 데이터로 변경해야함
-    title: "생활코딩! React 리액트 프로그래밍",
-    author: "이고잉",
-    publisher: "위키북스",
-    year: 2023,
-    copies: 0,
-    description:"생활코딩은 일반인에게 프로그래밍을 알려주는 것을 목적으로 하는 비영리 교육 활동이다. 이 책은 생활코딩에서 제공하는 수업 가운데 리액트와 관련된 수업을 정리한 책이다. 이 수업은 프로그래밍을 처음 시작하는 분들의 눈높이에 맞게 만들어진 강의로서 동영상이나 텍스트만으로도 학습할 수 있게 만들어져 있다.\n이번 개정판에서는 함수형 방식으로 리액트 애플리케이션을 개발하는 방법을 비롯하여 리액트 라우터 돔, 리액트 리덕스, Next.js 등 리액트를 개발하는 데 도움되는 다양한 주제를 다룬다. 이 책을 모두 읽고 나면 리액트를 기반으로 현대적인 웹 애플리케이션 UI를 개발하는 능력을 갖출 수 있을 것이다.",
-    isAvailable: true,
-    image: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRf8v25pgAWnUt_p04D2iJiRWa0Y8Ov5SFjUTf8T2-2kpQF6cdvDDiqL-3kMNSDmKKmG_W9q38PbWWOpLUlhjwql4t9GTfET1dRMVXVTtW6SvWVIjHKaBzUUg&usqp=CAE",
-  };
-  const handleBorrow = () => {
-    console.log(`${BookData.title} 책을 대여하려고 합니다.`);
-    // 여기에 대여 요청 로직 추가 가능 (ex: API 호출)
+  const [userData, setUserData] = useState({ name: "", studentId: "" });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUserData({ ...userData, [name]: value });
   };
 
+  const location = useLocation();
+  const bookData = location.state?.bookData || {};
+  const selectedBook = books.find((book) => book.title === bookData?.title) || {};
+
   return (
-    <div className="p-3 lg:p-5">
-      <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-4">
-        <div className="flex flex-col space-y-4 w-auto max-w-lg h-auto">
-          <Book viewMode="list"  {...BookData} />
-          <Book viewMode="list"  {...BookData} />
-        </div>
-        <div className="flex flex-col justify-center items-start">
-        {bookData.title ? (
-          <Book viewMode="card" {...bookData} />
-        ) : (
-          <p>No book information available.</p>
-        )}
+    <div className="flex flex-col md:flex-row h-screen w-full">
+      {/* 📌 좌측 - 책 목록 (모바일에서는 숨김) */}
+      <div className="hidden md:block md:w-1/4 bg-gray-100 p-4 overflow-y-auto border-r border-gray-300">
+        {books.map((book, index) => (
+          <Book key={index} viewMode="list" {...book} />
+        ))}
+      </div>
+
+      {/* 📌 중앙 - 책 상세 정보 */}
+      <div className="w-full md:w-2/4 p-6 flex flex-col justify-start space-y-4">
+        {/* 책 제목 및 설명 */}
+        <h1 className="text-xl sm:text-2xl font-bold">{selectedBook?.title || "책 정보 없음"}</h1>
+        <p className="text-sm text-gray-500">{selectedBook?.author} | {selectedBook?.publisher} | {selectedBook?.year}</p>
+        <p className="text-gray-600">{selectedBook?.description || "책 설명이 없습니다."}</p>
+
+        {/* 책 이미지 */}
+        <div className="flex justify-center">
+          {selectedBook?.image ? (
+            <img src={selectedBook.image} alt="책 이미지" className="w-full max-w-xs rounded-lg shadow-md" />
+          ) : (
+            <p className="text-gray-500">책 이미지가 없습니다.</p>
+          )}
         </div>
       </div>
 
-      <div className="mt-8 flex justify-center">
-      <button
-className="px-6 py-3 bg-black text-white rounded-md hover:bg-gray-800 transition duration-300"
-onClick={handleBorrow}
->
-  {BookData.isAvailable ? "대여하기" : "대여 불가"}
-</button>
-  </div>
+      {/* 📌 우측 - 사용자 정보 입력 및 대여 버튼 */}
+      <div className="w-full md:w-1/4 p-6 border-l border-gray-300 flex flex-col justify-start space-y-6">
+        {/* 닫기 버튼 (반응형 위치 수정) */}
+        <Link to="/libraryBorrow" className="fixed top-4 right-4 sm:right-6 text-gray-600 text-2xl font-bold">
+          ✖
+        </Link>
+
+        {/* 사용자 정보 입력란 */}
+        <div className="space-y-4">
+          <div>
+            <label htmlFor="name" className="block font-semibold text-gray-700">
+              이름<span className="text-red-500">*</span>
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={userData.name}
+              onChange={handleChange}
+              className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black"
+              required
+              placeholder="이름을 입력하세요"
+            />
+          </div>
+          <div>
+            <label htmlFor="studentId" className="block font-semibold text-gray-700">
+              학번<span className="text-red-500">*</span>
+            </label>
+            <input
+              type="text"
+              id="studentId"
+              name="studentId"
+              value={userData.studentId}
+              onChange={handleChange}
+              className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black"
+              required
+              placeholder="학번을 입력하세요"
+            />
+          </div>
+        </div>
+
+        {/* 대여하기 버튼 */}
+        <div className="flex justify-center mt-6">
+          <Link to="/libraryBorrow">
+            <button
+              type="button"
+              className="w-full sm:w-auto bg-gray-900 hover:bg-gray-700 text-white font-bold px-6 py-3 rounded-md shadow-md transition-all duration-300"
+            >
+              대여하기
+            </button>
+          </Link>
+        </div>
+      </div>
     </div>
   );
 };
