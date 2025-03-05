@@ -23,7 +23,7 @@ const Header = () => {
                 <ul className="hidden md:flex space-x-6">
                     <li><Link to="/AboutUsPage" className="hover:font-bold">About Us</Link></li>
                     <li><Link to="/BoardDetail" className="hover:font-bold">Board</Link></li>
-                    <li><Link to="/BoardDetail" className="hover:font-bold">Study</Link></li>
+                    <li><Link to="/Study" className="hover:font-bold">Study</Link></li>
                     <li><Link to="/LibraryBorrow" className="hover:font-bold">Library</Link></li>
                 </ul>
 
