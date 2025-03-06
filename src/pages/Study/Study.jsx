@@ -7,7 +7,7 @@ import "prismjs/themes/prism-tomorrow.css";
 const Study = () => {
     const [response, setResponse] = useState(null);
     const [loading, setLoading] = useState(true);
-    const { notionPageId = '1adb0a2d89d480d09a33f19d81e081bb?v=1adb0a2d89d48056854f000cec10df71' } = useParams();
+    const { notionPageId = '1a8b0a2d89d48004bc18f3c6f1273748' } = useParams();
 
     useEffect(() => {
         const fetchNotionData = async () => {
