@@ -15,7 +15,7 @@ const StudySideBar = () => {
         fetchNotionData();
     }, []);
 
-    return (
+    return (    
         <div className="min-h-screen bg-gray-200 flex justify-center py-2">
             <div className="w-full max-w-7xl bg-gray-200 px-5 flex space-x-3">
                 {/* 최신 글 목록 */}
@@ -24,7 +24,7 @@ const StudySideBar = () => {
                     <ul className="space-y-2">
                         {latestPosts.length > 0 ? (
                             latestPosts.map((post, index) => (
-                                <li key={index} className="text-gray-800 hover:text-blue-500 cursor-pointer">
+aa                                 <li key={index} className="text-gray-800 hover:text-blue-500 cursor-pointer">
                                     {post}
                                 </li>
                             ))

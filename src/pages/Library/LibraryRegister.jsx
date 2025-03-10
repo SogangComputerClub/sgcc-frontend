@@ -131,6 +131,7 @@ const LibraryRegister = () => {
                         <label htmlFor="description" className="block font-semibold text-gray-700">
                             설명
                         </label>
+                        
                         <textarea
                             id="description"
                             name="description"
